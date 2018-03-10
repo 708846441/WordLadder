@@ -33,6 +33,8 @@ of the stack:
 
 public class WordLadder 
 {
+	private static Stack<String> ladder;
+	
 	public static void main(String[] args) throws IOException
 	   {
 			Set<String> dictionary = new HashSet<String>();
@@ -137,6 +139,8 @@ public class WordLadder
 					if (neighborWord.equals(w2))
 					{
 						System.out.print("A ladder from "+w2+" back to "+w1+":\n"+w2);
+						ladder=new Stack<String>();
+						ladder.addAll(partial);
 						while(!partial.isEmpty())
 						{
 							String word = partial.pop();
@@ -180,6 +184,8 @@ public class WordLadder
 					if(neighbor.equals(w2))
 					{
 						System.out.print("A ladder from "+w2+" back to "+w1+":\n"+w2);
+						ladder=new Stack<String>();
+						ladder.addAll(partial);
 						while(!partial.isEmpty())
 						{
 							String word = partial.pop();
@@ -202,4 +208,8 @@ public class WordLadder
 		System.out.println("No word ladder found from " + w2 + " back to " + w1 + "." );
 	}
 	
+	public static Stack<String> getLadder()
+	{
+		return ladder;
+	}
 }
